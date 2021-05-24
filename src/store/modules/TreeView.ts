@@ -12,6 +12,18 @@ class TreeView extends VuexModule {
     return this.dataList
   }
 
+  get shortListGetter (): Array<IBrand> {
+    const result = this.dataList.reduce((newArr:Array<IBrand>, currentBrand:IBrand) => {
+      if (currentBrand.main && (newArr).length <= 5) {
+        newArr.push(currentBrand)
+      }
+      return newArr
+    }, [])
+    if (!result) {
+      return this.dataList.slice(0, 4)
+    } else return result
+  }
+
   @Mutation
   public SET_DATA_LIST (data: Array<IBrand>): void {
     this.dataList = data

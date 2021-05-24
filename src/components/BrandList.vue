@@ -5,7 +5,7 @@
 <!--      <input @keydown="getDataList"/>-->
     </div>
     <div class="data__list">
-      <brand-item v-for="(item, index) in DataListGetter"
+      <brand-item v-for="(item, index) in shortListGetter"
                   :brand="item"
                   :key="index" class="data__item"/>
     </div>
@@ -43,6 +43,9 @@ export default class HelloWorld extends Vue {
 
   @TreeView.Getter
   public DataListGetter!: Array<IBrand>
+
+  @TreeView.Getter
+  public shortListGetter!: Array<IBrand>
 
   created (): void {
     this.getDataList()
