@@ -5,12 +5,13 @@
 <!--      <input @keydown="getDataList"/>-->
     </div>
     <div class="data__list">
-      <brand-item v-for="(item, index) in shortListGetter"
+      <brand-item v-for="(item) in shortListGetter"
                   :brand="item"
-                  :key="index" class="data__item"/>
+                  :key="item.id" class="data__item"/>
     </div>
     <footer>
       <button @click="resetFrontDB">RESET DB</button>
+      {{ shortListGetter }}
     </footer>
   </div>
 </template>
@@ -29,6 +30,9 @@ const TreeView = namespace('treeview')
   }
 })
 export default class HelloWorld extends Vue {
+  @TreeView.State
+  public dataList!: Array<IBrand>
+
   @TreeView.Action
   public resetFrontDB!: () => void
 

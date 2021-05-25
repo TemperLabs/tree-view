@@ -53,8 +53,6 @@ export default class BrandItem extends Vue {
 
   public saveEdit (brand: IBrand): void {
     this.disableEditing()
-    console.log('brand on save')
-    console.log(brand)
     this.updateDataItem(brand)
   }
 

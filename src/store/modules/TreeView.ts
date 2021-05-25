@@ -33,13 +33,13 @@ class TreeView extends VuexModule {
   @Mutation
   public UPDATE_DATA_ITEM (adaptedData :IBrand): void {
     const foundIndex = this.dataList.findIndex((element: { id: string }) => element.id === adaptedData.id)
-    this.dataList[foundIndex] = { id: adaptedData.id, title: adaptedData.title, main: adaptedData.main }
+    const newArr = [...this.dataList]
+    newArr[foundIndex] = { id: adaptedData.id, title: adaptedData.title, main: adaptedData.main }
+    this.dataList = newArr
   }
 
   @Action
   public async updateDataItem (uploadData : IBrand): Promise<void> {
-    console.log('uploadData')
-    console.log(uploadData)
     const response = axios.put(`${API_URL}brand/${uploadData.id}`, { title: uploadData.title, main: uploadData.main }).catch((err) => {
       console.log(`error on updating Data item: ${err}`)
       throw new Error(err)
@@ -57,8 +57,6 @@ class TreeView extends VuexModule {
         title,
         main
       }
-      console.log('adaptedData')
-      console.log(adaptedData)
       this.context.commit('UPDATE_DATA_ITEM', adaptedData)
     }
   }
