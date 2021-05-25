@@ -1,8 +1,6 @@
 <template>
   <div>
     <div>
-      <div class="username"></div>
-<!--      <input @keydown="getDataList"/>-->
     </div>
     <div class="data__list">
       <brand-item v-for="(item) in shortListGetter"
@@ -11,7 +9,6 @@
     </div>
     <footer>
       <button @click="resetFrontDB">RESET DB</button>
-      {{ shortListGetter }}
     </footer>
   </div>
 </template>
@@ -29,7 +26,7 @@ const TreeView = namespace('treeview')
     BrandItem
   }
 })
-export default class HelloWorld extends Vue {
+export default class BrandList extends Vue {
   @TreeView.State
   public dataList!: Array<IBrand>
 

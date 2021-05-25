@@ -17,7 +17,7 @@ class TreeView extends VuexModule {
       if (currentBrand.main && shortArr.length <= 4) { shortArr.push(currentBrand) }
       return shortArr
     }, [])
-    return (!result) ? this.dataList.slice(0, 4) : result
+    return (result.length === 0) ? this.dataList.slice(0, 4) : result
   }
 
   @Mutation
