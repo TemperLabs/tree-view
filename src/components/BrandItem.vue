@@ -36,8 +36,8 @@ const TreeView = namespace('treeview')
 export default class BrandItem extends Vue {
   @Prop() readonly brand!: IBrand
 
-  @VModel tempTitle!: string
-  @VModel tempMain!: boolean
+  @VModel() tempTitle!: string
+  @VModel() tempMain!: boolean
   public isEditing = false
 
   @TreeView.Action
@@ -47,7 +47,7 @@ export default class BrandItem extends Vue {
   public updateDataItem!: (brand: IBrand) => void
 
   public disableEditing (): void {
-    this.tempTitle = null
+    this.tempTitle = ''
     this.isEditing = false
   }
 

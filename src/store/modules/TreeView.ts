@@ -78,7 +78,7 @@ class TreeView extends VuexModule {
       throw new Error(err)
     })
     if (response) {
-      const index = this.context.state.dataList.findIndex((element: { id: string }) => element.id === id)
+      const index = (<any> this.context.state).dataList.findIndex((element: { id: string }) => element.id === id)
       if (index > -1) { this.context.commit('DELETE_DATA_ITEM', index) }
     }
   }
